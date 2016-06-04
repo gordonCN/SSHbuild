@@ -1,0 +1,73 @@
+package com.spring.register.daoImpl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import com.spring.register.dao.UserDao;
+import com.spring.register.model.User;
+
+public class UserDaoImpl implements UserDao{
+
+	//private DataSource dataSource;
+	
+	private HibernateTemplate hibernateTemplate;
+
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+	@Resource
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	@Override
+	public void save(User user) {
+		
+		System.out.println("hello");
+		this.hibernateTemplate.save(user);
+		System.out.println("it oprated !");
+		/*Connection conn=null;
+		PreparedStatement pst = null;
+		try{
+		conn =  dataSource.getConnection();
+		String sql= "insert into user(id,password,username) values(null,?,?)";
+		pst = (PreparedStatement) conn.prepareStatement(sql);
+		pst.setString(1, user.getUsername());
+		pst.setString(2, user.getPassword());
+		int i = pst.executeUpdate();//preparedSta 执行无参函数
+			if(i != -1){
+				System.out.println("ok!"); 
+			}else{
+				System.out.println("fail！");
+			}				
+		} catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			try {
+				if(conn != null){
+					conn.close();
+					conn= null;
+				}
+				if(pst != null){
+					pst .close();
+					pst= null;
+				}
+			} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}*/
+		
+		System.out.println("save："+user.getUsername());
+	}	
+	
+
+	@Override
+	public void update(User user) {
+		
+	}
+
+}
