@@ -1,0 +1,26 @@
+package com.spring.register.service;
+
+import javax.annotation.Resource;
+
+import com.spring.register.dao.UserDao;
+import com.spring.register.daoImpl.UserDaoImpl;
+import com.spring.register.model.User;
+
+public class UserService {
+	
+	private UserDao userDao;
+	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public void padd(User user){
+		this.userDao.save(user);
+		
+	}
+	
+}
