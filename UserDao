@@ -1,0 +1,9 @@
+package com.spring.register.dao;
+
+import com.spring.register.model.User;
+
+public interface UserDao {
+	public void save(User user);
+	public void update(User user);
+	
+}
